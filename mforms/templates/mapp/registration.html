@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "mapp/base.html"%}
+{% load static %}
+{% block body_block %}
+<style type="text/css">
+  .container{
+  margin-top: 50px;
+  text-align: center;
+}
+</style>
+
+{% if registered %}
+
+<div class="container">
+    <h1>Thank you for registering!</h1>
+</div>
+{% else %}
+<div class="container">
+    <form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p}}
+
+    <input type="submit" name="" value="Register">
+  </form>
+    </div>
+  {% endif %}
+
+
+{% endblock %}
